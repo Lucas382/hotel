@@ -45,6 +45,11 @@ class Cliente
      */
     private $endereco;
 
+    public function __toString()
+    {
+        return $this->nome."".$this->sobrenome;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
