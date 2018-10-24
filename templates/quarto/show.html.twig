@@ -1,0 +1,46 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Quarto{% endblock %}
+
+{% block body %}
+    <h1>
+        <a href="{{ path('quarto_index') }}" class="btn btn-primary">
+            <i data-feather="arrow-left-circle"></i>
+         </a>
+        Quarto</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ quarto.id }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ quarto.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ quarto.nome }}</td>
+            </tr>
+            <tr>
+                <th>Descrição</th>
+                <td>{{ quarto.descricao }}</td>
+            </tr>
+            <tr>
+                <th>Fotos</th>
+                <td>{{ quarto.fotos ? quarto.fotos|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Diaria</th>
+                <td>{{ quarto.diaria }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    <a href="{{ path('quarto_edit', {'id': quarto.id}) }}">edit</a>
+
+    {{ include('quarto/_delete_form.html.twig') }}
+{% endblock %}

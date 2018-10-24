@@ -11,10 +11,11 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ReservaRepository")
+ * @ORM\Entity()
  */
 class Cliente
 {
@@ -27,16 +28,28 @@ class Cliente
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Type(
+     *   type="alpha",
+     *  message="O nome {{ value }} Não é valido"
+     * )
      */
     private $nome;
 
     /**
      * @ORM\Column(type="string", length=100)
+     *  @Assert\Type(
+     *     type="alpha",
+     *  message="O nome {{ value }} Não é valido"
+     * )
      */
     private $sobrenome;
 
     /**
      * @ORM\Column(type="string", length=100)
+     *  @Assert\Email(
+     *     message = "O email '{{ value }}' Não é um email valido!.",
+     *     checkMX = true
+     * )
      */
     private $email;
 

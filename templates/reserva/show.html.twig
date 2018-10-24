@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reserva{% endblock %}
+
+{% block body %}
+    <h1>Reserva</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reserva.id }}</td>
+            </tr>
+            <tr>
+                <th>DataEntrada</th>
+                <td>{{ reserva.dataEntrada ? reserva.dataEntrada|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DataSaida</th>
+                <td>{{ reserva.dataSaida ? reserva.dataSaida|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ValorTotal</th>
+                <td>{{ reserva.valorTotal }}</td>
+            </tr>
+            <tr>
+                <th>Observacao</th>
+                <td>{{ reserva.observacao }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reserva_index') }}">back to list</a>
+
+    <a href="{{ path('reserva_edit', {'id': reserva.id}) }}">edit</a>
+
+    {{ include('reserva/_delete_form.html.twig') }}
+{% endblock %}

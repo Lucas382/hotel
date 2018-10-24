@@ -1,0 +1,51 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Quarto index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        
+        <h1 >Listagem de Quartos 
+            <a href="{{ path('quarto_new') }}" class="btn btn-primary">Cadastrar</a>
+        </h1>
+    
+    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tipo</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Fotos</th>
+                <th>Diaria</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quarto in listagem %}
+            <tr>
+                <td>{{ quarto.id }}</td>
+                <td>{{ quarto.tipo }}</td>
+                <td>{{ quarto.nome }}</td>
+                <td>{{ quarto.descricao }}</td>
+                <td>{{ quarto.fotos ? quarto.fotos|join(', ') : '' }}</td>
+                <td>{{ quarto.diaria }}</td>
+                <td>
+                    <a href="{{ path('quarto_show', {'idQuarto': quarto.id}) }}" class="btn btn-info"><i data-feather="eye"></i></a>
+                    <a href="{{ path('quarto_edit', {'id': quarto.id}) }}" class="btn btn-success"><i data-feather="edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+    
+    </div>
+{% endblock %}

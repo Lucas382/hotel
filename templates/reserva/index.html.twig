@@ -1,0 +1,43 @@
+{% extends 'base-admin.html.twig' %}
+
+{% block title %}Listagem de Reserva{% endblock %}
+
+{% block body %}
+    <h1>Listagem de Reserva</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th><a href="?campo=dataEntrada&ord=ASC">Data Entrada</a></th>
+                <th><a href="?campo=dataSaida&ord=DESC">Data Saida</a></th>
+                <th>Valor Total</th>
+                <th>Observação</th>
+                <th>Quarto</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reserva in reservas %}
+            <tr>
+                <td>{{ reserva.id }}</td>
+                <td>{{ reserva.dataEntrada ? reserva.dataEntrada|date('d/m/Y') : '' }}</td>
+                <td>{{ reserva.dataSaida ? reserva.dataSaida|date('d/m/Y') : '' }}</td>
+                <td>{{ reserva.valorTotal }}</td>
+                <td>{{ reserva.observacao }}</td>
+                <td>{{ reserva.quarto }}</td>
+                <td>
+                    <a href="{{ path('reserva_show', {'id': reserva.id}) }}">show</a>
+                    <a href="{{ path('reserva_edit', {'id': reserva.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('reserva_new') }}">Create new</a>
+{% endblock %}
