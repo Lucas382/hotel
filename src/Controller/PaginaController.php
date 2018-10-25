@@ -34,7 +34,7 @@ class PaginaController extends AbstractController {
     }
 
     /**
-     * @Route("/login", name="login")
+     * @Route("/login2", name="login")
      */
     public function login() {
 
