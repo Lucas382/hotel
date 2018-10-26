@@ -1,4 +1,4 @@
-{% extends 'base-admin.html.twig'%}
+{% extends 'base.html.twig'%}
 
 {% block body %}
     <div class="container">
@@ -19,17 +19,17 @@
                 <ul class="list-group mb-3">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0">Product name</h6>
-                            <small class="text-muted">Brief description</small>
+                            <h6 class="my-0">{{ quarto.nome }}</h6>
+                            <small class="text-muted">{{ quarto.descricao }}</small>
                         </div>
-                        <span class="text-muted">$12</span>
+                        <span class="text-muted">Diaria R${{ quarto.diaria }}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
-                            <h6 class="my-0">Second product</h6>
-                            <small class="text-muted">Brief description</small>
+                            <h6 class="my-0">Total diarias</h6>
+                            <small class="text-muted">{{ total_dias }} * {{ quarto.diaria }}</small>
                         </div>
-                        <span class="text-muted">$8</span>
+                        <span class="text-muted">R$ {{ totalReserva }}</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
