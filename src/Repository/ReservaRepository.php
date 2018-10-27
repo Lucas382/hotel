@@ -64,6 +64,7 @@ class ReservaRepository extends ServiceEntityRepository
             ->setParameter("hoje",$hoje)
             ->orderBy("r.".$campo,$ordem)
             ->getQuery()
+            ->getResult()
             ->execute();
 
         return $reservas;
@@ -78,9 +79,9 @@ class ReservaRepository extends ServiceEntityRepository
     public function quartosOcupados(\DateTime $dataIni,\DateTime $dataFin,$quantidade)
     {
         $query=$this->createQueryBuilder('r');
-        $quartos = $query->where("r.dataEntrada >= : dataIni")
+        $quartos = $query->where("r.dataEntrada >= :dataIni")
         ->setParameter("dataIni",$dataIni)
-            ->andWhere("r.dataEntrada <= : dataFin")
+            ->andWhere("r.dataEntrada <= :dataFin")
             ->setParameter("dataFin",$dataFin)
             ->getQuery()
             ->execute();

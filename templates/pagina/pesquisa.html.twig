@@ -1,29 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}Bem Vindo ao Hotel Zin!{% endblock %}
 
 {% block javascripts %}
-    <script src="/daterangepicker-master/moment.min.js" type="text/javascript"></script>
-    <script src="/daterangepicker-master/daterangepicker.js" type="text/javascript"></script>
-    <link href="/daterangepicker-master/daterangepicker.css" rel="stylesheet" type="text/css"/>
 
-
+    <script src="/daterangepicker/moment.min.js" type="text/javascript"></script>
+    <script src="/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+    <link href="/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css"/>
 
 {% endblock %}
 
 {% block body %}
 
 
-
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <p class="lead">------------------------------------------------------------------------------</p>
-        <h1 class="display-4"> Pesquisar Reservas</h1>
-        <p class="lead">------------------------------------------------------------------------------</p>
+        <h1 class="display-4">Pesquise agora</h1>
+        <p class="lead">Veja os quartos disponiveis para sua data</p>
     </div>
 
     <div class="container">
 
+        {% for quarto in quartos %}
 
-</div>
+            <div class="card">
+                <div class="card-header">
+                    {{ quarto.nome }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Diaria: {{ quarto.diaria }}</h5>
+                    <p class="card-text">{{ quarto.descricao }}</p>
+                    <a href="{{ path('reservar', {'quarto': quarto.id}) }}" class="btn btn-primary">Reservar</a>
+                </div>
+            </div>
 
+        {% endfor %}
+
+    </div>
 {% endblock %}
